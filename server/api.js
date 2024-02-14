@@ -8,9 +8,9 @@ const initializeAPI = (app) => {
 
 const register = async (req, res) => {
   const { firstname, lastname, birthdate, street, zipcode, city, email, password } = req.body;
-  const query = `INSERT INTO users (firstname, lastname, birthdate, street, zipcode, city, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?);`;
+  const query = `INSERT INTO users (firstname, lastname, birthdate, street, zipcode, city, email, password) VALUES ("${firstname}", "${lastname}", "${birthdate}", "${street}", "${zipcode}", "${city}", "${email}", "${password}")`;
   try {
-    const result = await executeSQL(query, [firstname, lastname, birthdate, street, zipcode, city, email, password]);
+    const result = await executeSQL(query);
     if (result.affectedRows === 1) {
       res.json({ success: true });
     } else {
@@ -21,11 +21,12 @@ const register = async (req, res) => {
   }
 };
 
+
 const login = async (req, res) => {
   const { email, password } = req.body;
-  const query = `SELECT * FROM users WHERE email = ? AND password = ?`;
+  const query = `SELECT * FROM users WHERE email = "${email}" AND password = "${password}"`;
   try {
-    const users = await executeSQL(query, [email, password]);
+    const users = await executeSQL(query);
     if (users.length === 1) {
       const user = users[0];
       const token = jwt.sign(

@@ -1,28 +1,24 @@
 let pool = null;
 
-const mysql = require('mysql2/promise');
-
-const initializeMySQL = () => {
-  pool = mysql.createPool({
-    database: process.env.DB_NAME || 'mychat',
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'mychat',
-    password: process.env.DB_PASSWORD || 'mychatpassword',
-    waitForConnections: true,
+const initializeMariaDB = () => {
+  const mariadb = require("mariadb");
+  pool = mariadb.createPool({
+    database: process.env.DB_NAME || "mychat",
+    host: process.env.DB_HOST || "localhost",
+    user: process.env.DB_USER || "mychat",
+    password: process.env.DB_PASSWORD || "mychatpassword",
     connectionLimit: 5,
-    queueLimit: 0
   });
 };
 
-const executeSQL = async (query, params = []) => {
+const executeSQL = async (query) => {
   let conn;
   try {
     conn = await pool.getConnection();
-    const [res] = await conn.query(query, params);
+    const res = await conn.query(query);
     return res;
   } catch (err) {
-    console.error('Fehler bei der Ausführung der SQL-Abfrage:', err);
-    throw err;
+    console.log(err);
   } finally {
     if (conn) conn.release();
   }
@@ -42,7 +38,6 @@ const initializeDBSchema = async () => {
     PRIMARY KEY (id)
   );`;
   await executeSQL(userTableQuery);
-  
 };
 
-module.exports = { executeSQL, initializeMySQL, initializeDBSchema };
+module.exports = { executeSQL, initializeMariaDB, initializeDBSchema };

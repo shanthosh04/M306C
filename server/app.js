@@ -1,7 +1,7 @@
 const express = require("express");
 const http = require("http");
 const { initializeAPI } = require("./api");
-const { initializeMySQL, initializeDBSchema } = require("./database"); 
+const { initializeMariaDB, initializeDBSchema } = require("./database"); 
 
 // Create the express server
 const app = express();
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 initializeAPI(app);
 
 // Initialize the database
-initializeMySQL();
+initializeMariaDB();
 initializeDBSchema();
 
 //start the web server
