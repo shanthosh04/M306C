@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <script src="../scripts/index.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../img/logo.png" type="image/icon type" />
+    <title>Modul306</title>
+  </head>
+
+  <body class="bg-gray-900 text-white flex flex-col min-h-screen">
+
+    <nav class="bg-gray-800">
+      <div class="navigation">
+        <div class="flex items-center">
+          <a href="index.html">
+            <img class="h-12 my-4" src="../img/logo.png" alt="logo" />
+          </a>
+          <a href="homepage.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Startseite</a>
+          <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Abmelden</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="flex-grow flex items-center justify-center my-10">
+      <div class="bg-gray-800 p-4 w-80 justify-around rounded-lg">
+        <h1 class="text-white text-4xl my-3 font-bold">Einträge Erstellen</h1>
+        <div class="chat-container">
+          <form id="loginForm">
+
+            <div class="flex flex-col mb-4">
+              <label for="firstname" class="text-white">Vorname</label>
+              <input
+                class="p-2 border border-gray-300 rounded text-black"
+                type="firstname"
+                name="firstname"
+                id="firstname"
+                placeholder="Bitte geben Sie Ihre Vorname ein"
+                required
+              />
+            </div>
+            <div class="flex flex-col mb-4">
+              <label for="secoundname" class="text-white">Nachname:</label>
+              <input
+                class="p-2 border border-gray-300 rounded text-black"
+                type="secoundname"
+                name="secoundname"
+                id="secoundname"
+                placeholder="Bitte geben Sie Ihr Nachname ein"
+                required
+              />
+                </div>
+            <div class="flex flex-col mb-4">
+                <label for="secoundname" class="text-white">Nachname:</label>
+                <input
+                  class="p-2 border border-gray-300 rounded text-black"
+                  type="secoundname"
+                  name="secoundname"
+                  id="secoundname"
+                  placeholder="Bitte geben Sie Ihr Nachname ein"
+                  required
+                />
+              </div>
+            <div class="flex flex-col mb-4">
+                <label for="password" class="text-white">Passwort:</label>
+                <input
+                  class="p-2 border border-gray-300 rounded text-black"
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Bitte geben Sie Ihr Passwort ein"
+                  required
+                />
+              </div>
+            <button type="submit" id="send" class="bg-blue-500 text-white px-4 py-2 rounded w-full">Senden</button>
+          </form>
+          <div id="error"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-gray-800 py-8 px-3 mt-auto">
+      <div class="container mx-auto text-center">
+        <p class="text-white">Copyright &copy; 2024 | Designed by inf 22</p>
+      </div>
+    </footer>
+  
+  </body>
+  </html>
