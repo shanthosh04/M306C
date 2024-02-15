@@ -164,5 +164,11 @@ footer p {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+#chatwindow {
+  width: 800px;
+  height: 400px;
+  max-height: 600px;
+  overflow-y: scroll;
+}
 
 
