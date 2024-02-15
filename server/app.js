@@ -13,7 +13,8 @@ app.use(express.static("client"));
 
 // route for the homepage
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/client/html/index.html");
+  const newPath = __dirname.slice(0, -6);
+  res.sendFile(newPath + "/client/html/index.html");
 });
 
 // Initialize the REST api
