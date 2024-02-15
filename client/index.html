@@ -4,67 +4,65 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    
     <script src="scripts/index.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="img/logo.svg" type="image/icon type" />
     <title>event</title>
   </head>
 
-  <body>
-    <nav>
+  <body class="bg-gray-900 text-white flex flex-col min-h-screen">
+
+    <nav class="bg-gray-800">
       <div class="navigation">
-        <ul class="nav_s">
+        <div class="flex items-center justify-center sm:justify-between">
           <a href="index.html">
-            <img class="logo" src="img/logo.png" alt=" logo" />
+            <img class="h-12 my-4" src="img/logo.png" alt="logo" />
           </a>
-          <li><a href="register.html">Registrieren</a></li>
-        </ul>
+          <a href="register.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Registrieren</a>
+        </div>
       </div>
     </nav>
 
-    <br>
-    <br>
-
-    <h1>Login</h1>
-
-    <br>
-
-    <div class="chat-container">
-      <form id="loginForm">
-        <p>E-Mail</p>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Bitte geben Sie Ihre E-Mail ein"
-          required
-        />
-        <p>Passwort</p>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Bitte geben Sie Ihr Passwort ein"
-          required
-        />
-        <button type="submit" id="send">Senden</button>
-      </form>      
-      <div id="error"></div>
+    <div class="flex-grow flex items-center justify-center">
+      <div class="bg-gray-800 p-4 w-80 justify-around rounded-lg">
+        <h1 class="text-white text-4xl my-3 font-bold">Login</h1>
+        <div class="chat-container">
+          <form id="loginForm">
+            <div class="flex flex-col mb-4">
+              <label for="email" class="text-white">E-Mail</label>
+              <input
+                class="p-2 border border-gray-300 rounded text-black"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Bitte geben Sie Ihre E-Mail ein"
+                required
+              />
+            </div>
+            <div class="flex flex-col mb-4">
+              <label for="password" class="text-white">Passwort:</label>
+              <input
+                class="p-2 border border-gray-300 rounded text-black"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Bitte geben Sie Ihr Passwort ein"
+                required
+              />
+            </div>
+            <button type="submit" id="send" class="bg-blue-500 text-white px-4 py-2 rounded w-full">Senden</button>
+          </form>
+          <div id="error"></div>
+        </div>
+      </div>
     </div>
 
-    <br>
-    <br>
-    
-    <div class="footerfix">
-    <footer>
-      <table>
-        <tr>
-          <td>
-            <p>Copyright  &copy; 2024 | Designed by inf 22</span></p>
-          </td>
-        </tr>
-      </table>
+    <footer class="bg-gray-800 py-8 px-3 mt-auto">
+      <div class="container mx-auto text-center">
+        <p class="text-white">Copyright &copy; 2024 | Designed by inf 22</p>
+      </div>
     </footer>
-  </div>
+  
   </body>
-</html> 
+  </html>
