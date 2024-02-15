@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const result = await response.json();
             if (result.success) {
-                window.location.href = "./index.html";
+                window.location.href = "./html/index.html";
             } else {
                 errorText.innerText = "Registrierung fehlgeschlagen!";
             }
