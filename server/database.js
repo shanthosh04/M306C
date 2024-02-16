@@ -39,6 +39,20 @@ const initializeDBSchema = async () => {
   );`;
   await executeSQL(userTableQuery);
 
+  const companyTableQuery = `CREATE TABLE IF NOT EXISTS companys (
+    id INT NOT NULL AUTO_INCREMENT,
+    companyName VARCHAR(255) NOT NULL,
+    companyCity VARCHAR(255) NOT NULL,
+    companyStreet VARCHAR(255) NOT NULL,
+    companyDescription VARCHAR(255) NOT NULL,
+    contactPerson VARCHAR(255) NOT NULL,
+    companyEmail VARCHAR(255) NOT NULL,
+    companyPhone VARCHAR(255) NOT NULL,
+    companyField VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+  );`;
+  await executeSQL(companyTableQuery);
+
   const entriesTableQuery = `CREATE TABLE IF NOT EXISTS entries (
     id INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
@@ -72,6 +86,7 @@ const initializeDBSchema = async () => {
     FOREIGN KEY (user_id) REFERENCES users(id)
   );`;  
   await executeSQL(entriesTableQuery);
+
 };
 
 module.exports = { executeSQL, initializeMariaDB, initializeDBSchema };
