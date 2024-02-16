@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <script src="../scripts/index.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../img/logo.svg" type="image/icon type" />
+    <title>Modul306</title>
+  </head>
+
+  <body class="bg-gray-900 text-white flex flex-col min-h-screen">
+
+    <nav class="bg-gray-800">
+      <div class="navigation">
+        <div class="flex items-center">
+          <a href="index.html">
+            <img class="h-12 my-4" src="../img/logo.png" alt="logo" />
+          </a>
+          <a href="homepage.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Startseite</a>
+          <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Abmelden</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="flex-grow flex items-center justify-center my-10">
+      <div class="bg-gray-800 p-4 w-3/4 justify-around rounded-lg">
+        <h1 class="text-white text-4xl ml-3 my-3 font-bold">Einträge Erstellen</h1>
+        <div class="chat-container">
+          <form id="loginForm">
+            
+            <div class="flex">
+
+              <div class="w-1/2 p-4 ">
+                <div class="flex flex-col mb-4">
+                  <label for="firstname" class="text-white">Vorname:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="text"
+                    name="firstname"
+                    id="firstname"
+                    placeholder="Bitte geben Sie Ihre Vorname ein"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="secoundname" class="text-white">Nachname:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="text"
+                    name="secoundname"
+                    id="secoundname"
+                    placeholder="Bitte geben Sie Ihr Nachname ein"
+                    required
+                  />
+                    </div>
+                <div class="flex flex-col mb-4">
+                    <label for="Imageapplicant" class="text-white">Bild des Bewerbers:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="file"
+                      name="Imageapplicant"
+                      id="Imageapplicant"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                    <label for="address" class="text-white">Strasse und Hausnummber:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="text"
+                      name="address"
+                      id="address"
+                      placeholder="Bitte geben Sie Ihr Adresse ein"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                    <label for="cityAndZip" class="text-white">Ort und PLZ:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="text"
+                      name="cityAndZip"
+                      id="cityAndZip"
+                      placeholder="Bitte geben Sie Ihr Ort und PLZ ein"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                    <label for="country" class="text-white">Land:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="text"
+                      name="country"
+                      id="country"
+                      placeholder="Bitte geben Sie Ihr Land ein"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                    <label for="field" class="text-white">Fachrichtung:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="text"
+                      name="field"
+                      id="field"
+                      placeholder="Bitte geben Sie Ihr Fachrichtung ein"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                    <label for="class" class="text-white">Klasse:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="text"
+                      name="class"
+                      id="class"
+                      placeholder="Bitte geben Sie Ihr Klasse ein"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                    <label for="qvYear" class="text-white">Jahr der QV:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="number"
+                      name="qvYear"
+                      id="qvYear"
+                      placeholder="Bitte geben Sie Ihr Jahr der QV ein"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                    <label for="certificate" class="text-white">Note / Zeugnis:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="file"
+                      name="certificate"
+                      id="certificate"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                    <label for="noteQV" class="text-white">Note QV:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="file"
+                      name="noteQV"
+                      id="noteQV"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                    <label for="internshipContract" class="text-white">Praktikumsvertrag:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="file"
+                      name="internshipContract"
+                      id="internshipContract"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                    <label for="efzCopy" class="text-white">Kopie EFZ:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="file"
+                      name="efzCopy"
+                      id="efzCopy"
+                      required
+                    />
+                  </div>
+              </div>
+              <div class="w-1/2 p-4 ">
+                <div class="flex flex-col mb-4">
+                  <label for="legalguardian" class="text-white">Erziehungsberechtigte:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="text"
+                    name="legalguardian"
+                    id="legalguardian"
+                    placeholder="Bitte geben Sie Ihr Erziehungsberechtigte ein"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="applicationDate" class="text-white">Datum Bewerbung:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="date"
+                    name="applicationDate"
+                    id="applicationDate"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="internshipCompany" class="text-white">Praktikums Firma:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="text"
+                    name="internshipCompany"
+                    id="internshipCompany"
+                    placeholder="Bitte geben Sie Ihr Praktikums Firma ein"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="responsiblePerson" class="text-white">Zuständige Person:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="text"
+                    name="responsiblePerson"
+                    id="responsiblePerson"
+                    placeholder="Bitte geben Sie Ihr Zuständige Person ein"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="applicationStatus" class="text-white">Status Bewerbung:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="text"
+                    name="applicationStatus"
+                    id="applicationStatus"
+                    placeholder="Bitte geben Sie Ihr Status Bewerbung ein"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="interviewDate" class="text-white">Datum Bewerbungsgesprach:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="date"
+                    name="interviewDate"
+                    id="interviewDate"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="trialVisitDate" class="text-white">Datum Schnupperbesuch:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="date"
+                    name="trialVisitDate"
+                    id="trialVisitDate"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="contractCreationDate" class="text-white">Datum Vertragserstellung:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="date"
+                    name="contractCreationDate"
+                    id="contractCreationDate"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="internshipSalary1" class="text-white">Praktikumslohn 1. Jahr:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="number"
+                    name="internshipSalary1"
+                    id="internshipSalary1"
+                    placeholder="Bitte geben Sie Ihr Praktikumslohn 1. Jahr ein"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="internshipSalary2" class="text-white">Praktikumslohn 2. Jahr:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="number"
+                    name="internshipSalary2"
+                    id="internshipSalary2"
+                    placeholder="Bitte geben Sie Ihr Praktikumslohn 2. Jahr ein"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="mbaApprovalDate" class="text-white">Datum Bewilligung MBA:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="date"
+                    name="mbaApprovalDate"
+                    id="mbaApprovalDate"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="birthDate" class="text-white">Geburt Datum:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="date"
+                    name="birthDate"
+                    id="birthDate"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="ahvNumber" class="text-white">AHV Nummber:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="text"
+                    name="ahvNumber"
+                    id="ahvNumber"
+                    placeholder="Bitte geben Sie Ihr AHV Nummber ein"
+                    required
+                  />
+                </div> 
+              </div>
+            </div>
+            <button type="submit" id="send" class="bg-blue-500 text-white px-4 py-2 rounded w-full">Senden</button>
+          </form>
+
+          <div id="error"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-gray-800 py-8 px-3 mt-auto">
+      <div class="container mx-auto text-center">
+        <p class="text-white">Copyright &copy; 2024 | Designed by inf 22</p>
+      </div>
+    </footer>
+  
+  </body>
+  </html>

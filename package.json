@@ -7,11 +7,7 @@
     "build": "echo 'No build step required for pure JavaScript project'",
     "dev": "npx nodemon",
     "lint": "eslint",
-    "test": "jest",
-    "start": "node server/app.js",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "cypress:open:no-sandbox": "cypress open --no-sandbox"
+    "start": "node server/app.js"
   },
   "author": "shanthosh04 <shanthosh1610@gmail.com>",
   "license": "ISC",
