@@ -38,6 +38,40 @@ const initializeDBSchema = async () => {
     PRIMARY KEY (id)
   );`;
   await executeSQL(userTableQuery);
+
+  const entriesTableQuery = `CREATE TABLE IF NOT EXISTS entries (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    imageApplicant VARCHAR(255) NOT NULL, -- Geändert von Imageapplicant DATE
+    address VARCHAR(255) NOT NULL,
+    cityAndZip VARCHAR(255) NOT NULL,
+    country VARCHAR(255) NOT NULL,
+    field VARCHAR(255) NOT NULL,
+    classname VARCHAR(255) NOT NULL,
+    qvYear INT NOT NULL, -- Typ geändert von VARCHAR zu INT
+    certificate VARCHAR(255) NOT NULL,
+    noteQV VARCHAR(255) NOT NULL,
+    internshipContract VARCHAR(255) NOT NULL,
+    efzCopy VARCHAR(255) NOT NULL,
+    legalGuardian VARCHAR(255) NOT NULL,
+    applicationDate DATE NOT NULL,
+    internshipCompany VARCHAR(255) NOT NULL,
+    responsiblePerson VARCHAR(255) NOT NULL,
+    applicationStatus VARCHAR(255) NOT NULL,
+    interviewDate DATE NOT NULL,
+    trialVisitDate DATE NOT NULL,
+    contractCreationDate DATE NOT NULL,
+    internshipSalary1 INT NOT NULL,
+    internshipSalary2 INT NOT NULL,
+    mbaApprovalDate DATE NOT NULL,
+    birthDate DATE NOT NULL,
+    ahvNumber VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+  );`;  
+  await executeSQL(entriesTableQuery);
 };
 
 module.exports = { executeSQL, initializeMariaDB, initializeDBSchema };
