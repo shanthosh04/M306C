@@ -37,7 +37,7 @@ const initializeDBSchema = async () => {
     password VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
   );`;
-
+  await executeSQL(userTableQuery);
 
   const companyTableQuery = `CREATE TABLE IF NOT EXISTS companys (
     id INT NOT NULL AUTO_INCREMENT,
@@ -51,7 +51,7 @@ const initializeDBSchema = async () => {
     companyField VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
   );`;
-  
+  await executeSQL(companyTableQuery);
 
   const entriesTableQuery = `CREATE TABLE IF NOT EXISTS entries (
     id INT NOT NULL AUTO_INCREMENT,
@@ -85,7 +85,7 @@ const initializeDBSchema = async () => {
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
   );`;  
-  await executeSQL(entriesTableQuery, companyTableQuery, userTableQuery);
+  await executeSQL(entriesTableQuery);
 
 };
 
