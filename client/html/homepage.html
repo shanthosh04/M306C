@@ -8,6 +8,18 @@
     <script src="../scripts/homepage.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="img/logo.svg" type="image/icon type" />
+    <style>
+      /* Feste Höhe für das Chat-Fenster */
+      .chat-container {
+          height: 300px;
+      }
+      
+      /* Volle Höhe für das innere Element */
+      .chat-content {
+          height: 80%;
+          overflow-y: scroll;
+      }
+  </style>
     <title>Modul306</title>
   </head>
 
@@ -27,34 +39,43 @@
       </div>
     </nav>
     
-    <div class="flex-grow flex items-center justify-center">
-        <div class="bg-gray-800 p-4 w-96 rounded-lg overflow-auto">
+    <div class="flex-grow flex items-center justify-center chat-container">
+      <div class="bg-gray-800 p-4 w-96 rounded-lg overflow-auto chat-content">
           <div class="divide-y divide-gray-700">
-            <div class="py-2">
-              <h3 class="text-white text-lg font-semibold">Name</h3>
-              <p class="text-gray-400">Klasse</p>
-              <p class="text-gray-400">Fachrichtung</p>
-            </div>
-            <div class="py-2">
-              <h3 class="text-white text-lg font-semibold">Name</h3>
-              <p class="text-gray-400">Klasse</p>
-              <p class="text-gray-400">Fachrichtung</p>
-            </div>
-            <div class="py-2">
-                <h3 class="text-white text-lg font-semibold">Name</h3>
-                <p class="text-gray-400">Klasse</p>
-                <p class="text-gray-400">Fachrichtung</p>
+              <div class="py-2">
+                  <h3 class="text-white text-lg font-semibold">Name1</h3>
+                  <p class="text-gray-400">Klasse</p>
+                  <p class="text-gray-400">Fachrichtung</p>
+              </div>
+              <div class="py-2">
+                  <h3 class="text-white text-lg font-semibold">Name</h3>
+                  <p class="text-gray-400">Klasse</p>
+                  <p class="text-gray-400">Fachrichtung</p>
+              </div>
+              <div class="py-2">
+                  <h3 class="text-white text-lg font-semibold">Name</h3>
+                  <p class="text-gray-400">Klasse</p>
+                  <p class="text-gray-400">Fachrichtung</p>
               </div>
               <div class="py-2">
                 <h3 class="text-white text-lg font-semibold">Name</h3>
                 <p class="text-gray-400">Klasse</p>
                 <p class="text-gray-400">Fachrichtung</p>
-              </div>
-            <!-- Weitere Einträge hier -->
-            
+            </div>
+            <div class="py-2">
+              <h3 class="text-white text-lg font-semibold">Name</h3>
+              <p class="text-gray-400">Klasse</p>
+              <p class="text-gray-400">Fachrichtung</p>
           </div>
+          <div class="py-2">
+            <h3 class="text-white text-lg font-semibold">Name</h3>
+            <p class="text-gray-400">Klasse</p>
+            <p class="text-gray-400">Fachrichtung</p>
         </div>
+              <!-- Weitere Einträge hier -->
+          </div>
       </div>
+  </div>
       
 
     
