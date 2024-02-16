@@ -4,6 +4,7 @@ const { executeSQL } = require("./database");
 const initializeAPI = (app) => {
   app.post("/api/login", login);
   app.post("/api/register", register);
+  app.post("/api/addentries", addentries, authenticateToken);
   app.post("/api/addCompany", addCompany);
 };
 
@@ -20,6 +21,7 @@ const addCompany = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Serverfehler bei dem Ablauf" });
   }
+
 };
 
 const register = async (req, res) => {
@@ -57,6 +59,33 @@ const login = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Serverfehler beim Login" });
   }
+};
+
+const addentries = async (req, res) => {
+  const { firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname, qvYear, certificate, noteQV, intershipContract, efzCopy, legalGuardian, applivationDate, intershipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate, contractCreationDate, internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber } = req.body;
+  const userId = req.user.userId;
+  const query = `INSERT INTO events (user_id,  firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname, qvYear, certificate, noteQV, intershipContract, efzCopy, legalGuardian, applivationDate, intershipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate, contractCreationDate, internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber) VALUES ("${firstname}", "${lastname}", "${imageApplicant}", "${adress}", "${cityAndZip}", "${country}", "${field}", "${classname}", "${qvYear}", "${certificate}", "${noteQV}", "${intershipCompany}", "${efzCopy}", "${legalGuardian}", "${applivationDate}", "${intershipCompany}", "${responsiblePerson}", "${applicationStatus}", "${interviewDate}", "${trialVisitDate}", "${contractCreationDate}", "${internshipSalary1}", "${internshipSalary2}", "${mbaApprovalDate}", "${birthDate}", "${ahvNumber}",)`;
+  try {
+    const result = await executeSQL(query, [userId,  firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname, qvYear, certificate, noteQV, intershipContract, efzCopy, legalGuardian, applivationDate, intershipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate, contractCreationDate, internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber ]);
+    if (result.affectedRows === 1) {
+      res.json({ success: true });
+    } else {
+      res.json({ success: false, message: "Ereignis konnte nicht erstellt werden" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Serverfehler bei der Ereigniserstellung" });
+  }
+};
+
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if (token == null) return res.sendStatus(401);
+  jwt.verify(token, process.env.JWT_SECRET || 'secretevent', (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
 };
 
 module.exports = { initializeAPI };
