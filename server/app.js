@@ -15,7 +15,33 @@ app.use(express.static("client"));
 app.get("/", (req, res) => {
   const newPath = __dirname.slice(0, -6);
   res.sendFile(newPath + "/client/html/index.html");
+  
+  app.get("/homepage", (req, res) => {
+    res.sendFile(newPath + "/client/html/homepage.html");
+  });
+
+  app.get("/company/create", (req, res) => {
+    res.sendFile(newPath + "/client/html/addCompany.html");
+  });
+
+  app.get("/newForm", (req, res) => {
+    res.sendFile(newPath + "/client/html/addentries.html");
+  });
+
+  app.get("/request", (req, res) => {
+    res.sendFile(newPath + "/client/html/acceptEntries.html");
+  });
+
+  app.get("/company", (req, res) => {
+    res.sendFile(newPath + "/client/html/showCompany.html");
+  });
+
+  app.get("/register", (req, res) => {
+    res.sendFile(newPath + "/client/html/register.html");
+  });
 });
+
+
 
 // Initialize the REST api
 initializeAPI(app);

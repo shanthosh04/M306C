@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const { token } = await response.json();
             if (token) {
                 localStorage.setItem('token', token);
-                window.location.href = "../html/homepage.html";
+                window.location.href = "/homepage";
             } else {
                 errorText.innerText = "Login fehlgeschlagen!";
             }
