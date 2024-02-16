@@ -20,6 +20,10 @@
           height: 80%;
           overflow-y: scroll;
       }
+
+      .chat-content::-webkit-scrollbar {
+            display: none;
+        }
   </style>
     <title>Modul306</title>
   </head>
@@ -44,38 +48,7 @@
     
     <div class="flex-grow flex items-center justify-center chat-container">
       <div class="bg-gray-800 p-4 w-1/2 rounded-lg overflow-auto chat-content">
-          <div class="divide-y divide-gray-700">
-              <div class="py-2">
-                  <h3 class="text-white text-lg font-semibold">Name1</h3>
-                  <p class="text-gray-400">Klasse</p>
-                  <p class="text-gray-400">Fachrichtung</p>
-              </div>
-              <div class="py-2">
-                  <h3 class="text-white text-lg font-semibold">Name</h3>
-                  <p class="text-gray-400">Klasse</p>
-                  <p class="text-gray-400">Fachrichtung</p>
-              </div>
-              <div class="py-2">
-                  <h3 class="text-white text-lg font-semibold">Name</h3>
-                  <p class="text-gray-400">Klasse</p>
-                  <p class="text-gray-400">Fachrichtung</p>
-              </div>
-              <div class="py-2">
-                <h3 class="text-white text-lg font-semibold">Name</h3>
-                <p class="text-gray-400">Klasse</p>
-                <p class="text-gray-400">Fachrichtung</p>
-            </div>
-            <div class="py-2">
-              <h3 class="text-white text-lg font-semibold">Name</h3>
-              <p class="text-gray-400">Klasse</p>
-              <p class="text-gray-400">Fachrichtung</p>
-          </div>
-          <div class="py-2">
-            <h3 class="text-white text-lg font-semibold">Name</h3>
-            <p class="text-gray-400">Klasse</p>
-            <p class="text-gray-400">Fachrichtung</p>
-        </div>
-              <!-- Weitere Einträge hier -->
+          <div class="divide-y divide-gray-700" id="entryList">
           </div>
       </div>
   </div>
