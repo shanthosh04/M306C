@@ -35,5 +35,20 @@ const getAll = async (req, res) => {
   res.json(result);
 };
 
-module.exports = { add, getAll };
+const getCompanyById = async (req, res) => {
+  const companyId = req.params.id; // Die ID der Firma aus den Routenparametern abrufen
+  const query = `SELECT * FROM companys WHERE id = ${companyId}`;
+  try {
+    const result = await executeSQL(query);
+    if (result.length === 1) {
+      res.json(result[0]); // Nur die erste gefundene Firma zurückgeben (es sollte nur eine sein, da es sich um eine eindeutige ID handelt)
+    } else {
+      res.status(404).json({ error: "Firma nicht gefunden" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Serverfehler beim Abrufen der Firma" });
+  }
+};
+
+module.exports = { add, getAll, getCompanyById };
 
