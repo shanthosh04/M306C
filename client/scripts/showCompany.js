@@ -17,6 +17,12 @@ const MockEntryArray = [
 ]
 
 document.addEventListener('DOMContentLoaded', () => {
+
+
+
+    
+
+
     const entryList = document.getElementById("entryList")
     const showEntrys = (array) => {
         for (let i = 0; i < array.length; i++) {

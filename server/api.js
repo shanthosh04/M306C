@@ -39,5 +39,6 @@ app.post("/login", auth.login);
 app.post("/register", auth.register);
 app.post("/addentries", addentries);
 app.post("/addCompany", company.addCompany);
+app.get("/showAllEntries", entry.showAllEntries)
 
 module.exports = app;
