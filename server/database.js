@@ -58,17 +58,17 @@ const initializeDBSchema = async () => {
     user_id INT NOT NULL,
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
-    imageApplicant VARCHAR(255) NOT NULL, -- Geändert von Imageapplicant DATE
+    imageApplicant longblob NOT NULL, -- Geändert von Imageapplicant DATE
     address VARCHAR(255) NOT NULL,
     cityAndZip VARCHAR(255) NOT NULL,
     country VARCHAR(255) NOT NULL,
     field VARCHAR(255) NOT NULL,
     classname VARCHAR(255) NOT NULL,
     qvYear INT NOT NULL, -- Typ geändert von VARCHAR zu INT
-    certificate VARCHAR(255) NOT NULL,
-    noteQV VARCHAR(255) NOT NULL,
-    internshipContract VARCHAR(255) NOT NULL,
-    efzCopy VARCHAR(255) NOT NULL,
+    certificate longblob NOT NULL,
+    noteQV longblob NOT NULL,
+    internshipContract longblob NOT NULL,
+    efzCopy longblob NOT NULL,
     legalGuardian VARCHAR(255) NOT NULL,
     applicationDate DATE NOT NULL,
     internshipCompany VARCHAR(255) NOT NULL,
