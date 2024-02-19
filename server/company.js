@@ -30,10 +30,10 @@ VALUES
     res.status(500).json({ error: "Serverfehler bei dem Ablauf" });
   }
 };
-
 const getAll = async (req, res) => {
   const result = await executeSQL(`SELECT * FROM companys`);
   res.json(result);
 };
 
 module.exports = { add, getAll };
+

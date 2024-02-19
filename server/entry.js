@@ -75,4 +75,13 @@ const add = async (req, res) => {
   }
 };
 
-module.exports = { add };
+
+const showAllEntries = async (req, res) => {
+  const allCompanies = await executeSQL('SELECT * FROM entries');
+  const result = allCompanies;
+
+  res.json(result);
+}
+
+module.exports = { add, showAllEntries };
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="../scripts/showEntries.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/logo.svg" type="image/icon type" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        /* Feste Höhe für das Chat-Fenster */
+        .chat-container {
+            height: 450px;
+        }
+        
+        /* Volle Höhe für das innere Element */
+        .chat-content {
+            height: 80%;
+            overflow-y: scroll;
+        }
+
+        .chat-content::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <title>Modul306</title>
+</head>
+<body class="bg-gray-900 text-white flex flex-col min-h-screen">
+
+<nav class="bg-gray-800">
+    <div class="navigation flex items-center justify-around py-4">
+        <a href="homepage.html" class="flex items-center">
+            <img class="h-12" src="../img/logo.png" alt="logo" />
+            <span class="text-gray-300 hover:text-white ml-3 text-xl font-medium">Startseite</span>
+        </a>
+        <a href="/company/create" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Firmen hinzufügen</a>
+        <a href="/newForm" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Einträge Erstellen</a>
+        <a href="/request" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Anfragen</a>
+        <a href="/company" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Firmen</a>
+        <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Abmelden</a>
+    </div>
+</nav>
+
+<div class="flex-grow flex items-center justify-center chat-container">
+    <div class="bg-gray-800 p-6 w-full md:w-3/4 lg:w-1/2 xl:w-2/5 rounded-lg overflow-auto chat-content">
+        <div class="divide-y divide-gray-700" id="entryList">
+            <div class="output-summary">
+                <h2 class="text-white">Bewerbungsübersicht</h2>
+                <div class="flex flex-wrap">
+                  <div class="w-1/2 p-4">
+                    <p><strong>Vorname:</strong> <span id="outputFirstname"></span></p>
+                    <p><strong>Nachname:</strong> <span id="outputSecoundname"></span></p>
+                    <p><strong>Adresse:</strong> <span id="outputAddress"></span></p>
+                    <p><strong>Ort und PLZ:</strong> <span id="outputCityAndZip"></span></p>
+                    <p><strong>Land:</strong> <span id="outputCountry"></span></p>
+                    <p><strong>Fachrichtung:</strong> <span id="outputField"></span></p>
+                    <p><strong>Klasse:</strong> <span id="outputClassname"></span></p>
+                    <p><strong>Jahr der QV:</strong> <span id="outputQvYear"></span></p>
+                    <p><strong>Erziehungsberechtigte:</strong> <span id="outputLegalguardian"></span></p>
+                    <p><strong>Datum Bewerbung:</strong> <span id="outputApplicationDate"></span></p>
+                    <p><strong>Praktikums Firma:</strong> <span id="outputInternshipCompany"></span></p>
+                  </div>
+                  <div class="w-1/2 p-4">
+                    <p><strong>Zuständige Person:</strong> <span id="outputResponsiblePerson"></span></p>
+                    <p><strong>Status Bewerbung:</strong> <span id="outputApplicationStatus"></span></p>
+                    <p><strong>Datum Bewerbungsgespräch:</strong> <span id="outputInterviewDate"></span></p>
+                    <p><strong>Datum Schnupperbesuch:</strong> <span id="outputTrialVisitDate"></span></p>
+                    <p><strong>Datum Vertragserstellung:</strong> <span id="outputContractCreationDate"></span></p>
+                    <p><strong>Praktikumslohn 1. Jahr:</strong> <span id="outputInternshipSalary1"></span></p>
+                    <p><strong>Praktikumslohn 2. Jahr:</strong> <span id="outputInternshipSalary2"></span></p>
+                    <p><strong>Datum Bewilligung MBA:</strong> <span id="outputMbaApprovalDate"></span></p>
+                    <p><strong>Geburt Datum:</strong> <span id="outputBirthDate"></span></p>
+                    <p><strong>AHV Nummer:</strong> <span id="outputAhvNumber"></span></p>
+                  </div>
+                </div>
+              </div>
+              
+        </div>
+      </div>
+    </div>
+      
+
+    
+
+    <footer class="bg-gray-800 py-8 px-3 mt-auto">
+      <div class="container mx-auto text-center">
+        <p class="text-white">Copyright &copy; 2024 | Designed by inf 22</p>
+      </div>
+    </footer>
+  
+  </body>
+  </html>

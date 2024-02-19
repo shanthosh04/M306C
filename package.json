@@ -10,7 +10,7 @@
     "start": "node server/app.js",
     "test": "nodemon server/app.js"
   },
-  "author": "shanthosh04 <shanthosh1610@gmail.com>",
+  "author": "Inf 22",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
