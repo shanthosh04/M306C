@@ -1,6 +1,6 @@
 const { executeSQL } = require("./database");
 
-const addEntry = async (req, res) => {
+const add = async (req, res) => {
   const {
     firstname,
     lastname,
@@ -16,7 +16,7 @@ const addEntry = async (req, res) => {
     intershipContract,
     efzCopy,
     legalGuardian,
-    applivationDate,
+    applicationDate,
     intershipCompany,
     responsiblePerson,
     applicationStatus,
@@ -31,9 +31,37 @@ const addEntry = async (req, res) => {
   } = req.body;
   const userId = 1;
   console.log(userId);
-  const query = `INSERT INTO entries(user_id, firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname, qvYear, certificate, noteQV, internshipContract, efzCopy, legalGuardian, applicationDate, internshipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate, contractCreationDate, internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber) VALUES ( 1, "${firstname}", "${lastname}", "${imageApplicant}", "${address}", "${cityAndZip}", "${country}", "${field}", "${classname}", 2000, "${certificate}", "${noteQV}", "${intershipContract}", "${efzCopy}", "${legalGuardian}", "2023-01-01", "${intershipCompany}", "${responsiblePerson}", "${applicationStatus}", "2023-01-01", "2023-01-01", "2023-01-01", 333, 3332, "2023-01-01", "2023-01-01", 3333);`;
+  const query = `INSERT INTO entries(user_id, firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname, qvYear, certificate, noteQV, internshipContract, efzCopy, legalGuardian, applicationDate, internshipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate, contractCreationDate, internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber) VALUES ( 1, "${firstname}", "${lastname}", "${imageApplicant}", "${address}", "${cityAndZip}", "${country}", "${field}", "${classname}", "${qvYear}", "${certificate}", "${noteQV}", "${intershipContract}", "${efzCopy}", "${legalGuardian}", "${applicationDate}", "${intershipCompany}", "${responsiblePerson}", "${applicationStatus}", "${interviewDate}", "${trialVisitDate}", "${contractCreationDate}", ${internshipSalary1}, ${internshipSalary2}, "${mbaApprovalDate}", "${birthDate}", "${ahvNumber}");`;
   try {
-    const result = await executeSQL(query);
+    const result = await executeSQL(
+      query,
+      firstname,
+      lastname,
+      imageApplicant,
+      address,
+      cityAndZip,
+      country,
+      field,
+      classname,
+      qvYear,
+      certificate,
+      noteQV,
+      intershipContract,
+      efzCopy,
+      legalGuardian,
+      applicationDate,
+      intershipCompany,
+      responsiblePerson,
+      applicationStatus,
+      interviewDate,
+      trialVisitDate,
+      contractCreationDate,
+      internshipSalary1,
+      internshipSalary2,
+      mbaApprovalDate,
+      birthDate,
+      ahvNumber
+    );
     if (result.affectedRows === 1) {
       res.json({ success: true });
     } else {
@@ -47,4 +75,4 @@ const addEntry = async (req, res) => {
   }
 };
 
-module.exports = { addEntry };
+module.exports = { add };

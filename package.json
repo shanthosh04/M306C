@@ -7,7 +7,8 @@
     "build": "echo 'No build step required for pure JavaScript project'",
     "dev": "npx nodemon",
     "lint": "eslint",
-    "start": "node server/app.js"
+    "start": "node server/app.js",
+    "test": "nodemon server/app.js"
   },
   "author": "shanthosh04 <shanthosh1610@gmail.com>",
   "license": "ISC",
