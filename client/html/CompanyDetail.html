@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <script src="../scripts/CompanyDetail.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../img/logo.svg" type="image/icon type" />
+    <title>Firmen erstellen</title>
+  </head>
+
+  <body class="bg-gray-900 text-white flex flex-col min-h-screen">
+
+    <nav class="bg-gray-800">
+      <div class="navigation">
+
+        <div class="flex items-center">
+          <a href="homepage.html">
+            <img class="h-12 my-4" src="../img/logo.png" alt="logo" />
+          </a>
+          <a href="/homepage" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Start Seite</a>
+          <a href="/company/create" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Firmen hinzufügen</a>
+          <a href="/newForm" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Einträge Erstellen</a>
+          <a href="/request" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Anfragen</a>
+          <a href="/company" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Firmen</a>
+          <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Abmelden</a>
+        </div>
+
+      </div>
+  </nav>
+
+    <div class="flex-grow flex items-center justify-center my-10">
+      <div class="bg-gray-800 p-4 w-3/4 justify-around rounded-lg">
+        <h1 class="text-white text-4xl ml-3 my-3 font-bold">Unternehmensdetails</h1>
+        <div class="company-form-container fullEntry" id="fullEntry">
+
+            
+
+            <div id="error"></div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-gray-800 py-8 px-3 mt-auto">
+      <div class="container mx-auto text-center">
+        <p class="text-white">Copyright &copy; 2024 | Designed by inf 22</p>
+      </div>
+    </footer>
+  
+  </body>
+</html>
