@@ -37,7 +37,7 @@ const authenticateToken = (req, res, next) => {
 
 app.post("/login", auth.login);
 app.post("/register", auth.register);
-app.post("/addentries", authenticateToken,  addentries);
+app.post("/addentries", addentries);
 app.post("/addCompany", company.addCompany);
 
 module.exports = app;
