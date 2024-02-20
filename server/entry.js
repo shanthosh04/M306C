@@ -83,5 +83,20 @@ const showAllEntries = async (req, res) => {
   res.json(result);
 }
 
-module.exports = { add, showAllEntries };
+const getEntryById = async (req, res) => {
+  const entryId = req.params.id; // Die ID der Firma aus den Routenparametern abrufen
+  const query = `SELECT * FROM entries WHERE id = ${entryId}`;
+  try {
+    const result = await executeSQL(query);
+    if (result.length === 1) {
+      res.json(result[0]); // Nur die erste gefundene Firma zurückgeben (es sollte nur eine sein, da es sich um eine eindeutige ID handelt)
+    } else {
+      res.status(404).json({ error: "Eintrag nicht gefunden" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Serverfehler beim Abrufen des Eintrags" });
+  }
+};
+
+module.exports = { add, showAllEntries, getEntryById };
 

@@ -17,10 +17,14 @@ const authenticateToken = (req, res, next) => {
 
 app.post("/login", auth.login);
 app.post("/register", auth.register);
+
 app.post("/entry/add", entry.add);
+app.get("/showAllEntries", entry.showAllEntries);
+app.get("/entry/:id", entry.getEntryById);
+
 app.get("/company", company.getAll);
 app.post("/company", company.add);
 app.get("/company/:id", company.getCompanyById);
-app.get("/showAllEntries", entry.showAllEntries)
+
 
 module.exports = app;

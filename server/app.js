@@ -26,6 +26,7 @@ app.get("/request", (req, res) => res.sendFile(newPath + "acceptEntries.html"));
 app.get("/company", (req, res) => res.sendFile(newPath + "showCompany.html"));
 app.get("/register", (req, res) => res.sendFile(newPath + "register.html"));
 app.get("/companyDetail/:companyId", (req, res) => res.sendFile(newPath + "CompanyDetail.html"));
+app.get("/entryDetail/:entryId", (req, res) => res.sendFile(newPath + "entriesDetail.html"));
 
 // Initialize the REST api
 app.use("/api", api);

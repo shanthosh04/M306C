@@ -44,7 +44,7 @@ const initializeDBSchema = async () => {
     companyName VARCHAR(255) NOT NULL,
     companyCity VARCHAR(255) NOT NULL,
     companyStreet VARCHAR(255) NOT NULL,
-    companyDescription VARCHAR(255) NOT NULL,
+    companyDescription VARCHAR(1024) NOT NULL,
     contactPerson VARCHAR(255) NOT NULL,
     companyEmail VARCHAR(255) NOT NULL,
     companyPhone VARCHAR(255) NOT NULL,

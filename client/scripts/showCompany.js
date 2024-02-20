@@ -1,21 +1,3 @@
-const MockEntryArray = [
-  {
-    firmenName: "Firma 1",
-    firmenEmail: "f@i.r",
-    beschreibung: "Blblblb",
-  },
-  {
-    firmenName: "Firma 2",
-    firmenEmail: "f@i.r",
-    beschreibung: "Blblblb",
-  },
-  {
-    firmenName: "Firma 3",
-    firmenEmail: "f@i.r",
-    beschreibung: "Blblblb",
-  },
-];
-
 document.addEventListener("DOMContentLoaded", async () => {
   const entryList = document.getElementById("entryList");
   const showEntries = (array) => {
