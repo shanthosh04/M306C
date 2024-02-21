@@ -3,10 +3,10 @@ let pool = null;
 const initializeMariaDB = () => {
   const mariadb = require("mariadb");
   pool = mariadb.createPool({
-    database: process.env.DB_NAME || "mychat",
-    host: process.env.DB_HOST || "localhost",
-    user: process.env.DB_USER || "mychat",
-    password: process.env.DB_PASSWORD || "mychatpassword",
+    database: process.env.MYSQL_DATABASE || "mychat",
+    host: process.env.MYSQL_HOST || "localhost",
+    user: process.env.MYSQL_USER || "mychat",
+    password: process.env.MYSQL_PASSWORD || "mychatpassword",
     connectionLimit: 5,
   });
 };
@@ -84,9 +84,8 @@ const initializeDBSchema = async () => {
     ahvNumber VARCHAR(255),
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
-  );`;  
+  );`;
   await executeSQL(entriesTableQuery);
-
 };
 
 module.exports = { executeSQL, initializeMariaDB, initializeDBSchema };
