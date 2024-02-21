@@ -57,12 +57,19 @@ const add = async (req, res) => {
     birthDate,
     ahvNumber, )
 
+    const values = [
+      1, firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname,
+      qvYear, certificate, noteQV, internshipContract, efzCopy, legalGuardian, applicationDate,
+      intershipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate,
+      contractCreationDate ? contractCreationDate : null, // Verwendung von NULL, wenn kein Wert vorhanden ist
+      internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber
+    ];
 
   const userId = 1;
   console.log(userId);
-  const query = `INSERT INTO entries(user_id, firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname, qvYear, certificate, noteQV, internshipContract, efzCopy, legalGuardian, applicationDate, internshipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate, internshipSalary1, internshipSalary2, birthDate, ahvNumber) VALUES ( 1, "${firstname}", "${lastname}", "${imageApplicant}", "${address}", "${cityAndZip}", "${country}", "${field}", "${classname}", "${qvYear}", "${certificate}", "${noteQV}", "${internshipContract}", "${efzCopy}", "${legalGuardian}", "${applicationDate}", "${intershipCompany}", "${responsiblePerson}", "${applicationStatus}", "${interviewDate}", "${trialVisitDate}", ${internshipSalary1}, ${internshipSalary2}, "${birthDate}", "${ahvNumber}");`;
+  const query = `INSERT INTO entries(user_id, firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname, qvYear, certificate, noteQV, internshipContract, efzCopy, legalGuardian, applicationDate, internshipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate, contractCreationDate, internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber) VALUES ( 1, "${firstname}", "${lastname}", "${imageApplicant}", "${address}", "${cityAndZip}", "${country}", "${field}", "${classname}", "${qvYear}", "${certificate}", "${noteQV}", "${internshipContract}", "${efzCopy}", "${legalGuardian}", "${applicationDate}", "${intershipCompany}", "${responsiblePerson}", "${applicationStatus}", "${interviewDate}", "${trialVisitDate}", "${contractCreationDate}", ${internshipSalary1}, ${internshipSalary2}, "${mbaApprovalDate}", "${birthDate}", "${ahvNumber}");`;
   try {
-    const result = await executeSQL(query);
+    const result = await executeSQL(query, values);
     if (result.affectedRows === 1) {
       res.json({ success: true });
     } else {

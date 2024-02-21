@@ -76,7 +76,7 @@ const initializeDBSchema = async () => {
     applicationStatus VARCHAR(255) NOT NULL,
     interviewDate DATE NOT NULL,
     trialVisitDate DATE NOT NULL,
-    contractCreationDate DATE ,
+    contractCreationDate DATE,
     internshipSalary1 INT NOT NULL,
     internshipSalary2 INT NOT NULL,
     mbaApprovalDate DATE,
