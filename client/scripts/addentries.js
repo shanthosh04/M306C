@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const formData = new FormData(loginForm);
         const data = Object.fromEntries(formData.entries());
+        console.log(data)
 
         try {
-            const response = await fetch("/api/addentries", {
+            const response = await fetch("/api/entry/add", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const result = await response.json();
             if (result.success) {
-                window.location.href = "./login.html";
+                window.location.href = "/homepage";
             } else {
                 errorText.innerText = "Einträge einfügen fehlgeschlagen!";
             }
