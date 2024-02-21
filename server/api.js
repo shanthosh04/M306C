@@ -4,7 +4,7 @@ const { executeSQL } = require("./database");
 const initializeAPI = (app) => {
   app.post("/api/login", login);
   app.post("/api/register", register);
-  app.post("/api/addentries", addentries, authenticateToken);
+  app.post('/api/addentries', authenticateToken, addentries);
   app.post("/api/addCompany", addCompany);
 };
 
@@ -64,7 +64,8 @@ const login = async (req, res) => {
 const addentries = async (req, res) => {
   const { firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname, qvYear, certificate, noteQV, intershipContract, efzCopy, legalGuardian, applivationDate, intershipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate, contractCreationDate, internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber } = req.body;
   const userId = req.user.userId;
-  const query = `INSERT INTO events (user_id,  firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname, qvYear, certificate, noteQV, intershipContract, efzCopy, legalGuardian, applivationDate, intershipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate, contractCreationDate, internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber) VALUES ("${firstname}", "${lastname}", "${imageApplicant}", "${adress}", "${cityAndZip}", "${country}", "${field}", "${classname}", "${qvYear}", "${certificate}", "${noteQV}", "${intershipCompany}", "${efzCopy}", "${legalGuardian}", "${applivationDate}", "${intershipCompany}", "${responsiblePerson}", "${applicationStatus}", "${interviewDate}", "${trialVisitDate}", "${contractCreationDate}", "${internshipSalary1}", "${internshipSalary2}", "${mbaApprovalDate}", "${birthDate}", "${ahvNumber}",)`;
+
+  const query = `INSERT INTO events (user_id,  firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname, qvYear, certificate, noteQV, intershipContract, efzCopy, legalGuardian, applivationDate, intershipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate, contractCreationDate, internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber) VALUES ("${firstname}", "${lastname}", "${imageApplicant}", "${address}", "${cityAndZip}", "${country}", "${field}", "${classname}", "${qvYear}", "${certificate}", "${noteQV}", "${intershipCompany}", "${efzCopy}", "${legalGuardian}", "${applivationDate}", "${intershipCompany}", "${responsiblePerson}", "${applicationStatus}", "${interviewDate}", "${trialVisitDate}", "${contractCreationDate}", "${internshipSalary1}", "${internshipSalary2}", "${mbaApprovalDate}", "${birthDate}", "${ahvNumber}",)`;
   try {
     const result = await executeSQL(query, [userId,  firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname, qvYear, certificate, noteQV, intershipContract, efzCopy, legalGuardian, applivationDate, intershipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate, contractCreationDate, internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber ]);
     if (result.affectedRows === 1) {
