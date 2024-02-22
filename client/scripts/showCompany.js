@@ -1,12 +1,24 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const entryList = document.getElementById("entryList");
+  const style = document.createElement('style');
   const showEntries = (array) => {
     for (let i = 0; i < array.length; i++) {
       
+      let statusClass = ""; // Default class is empty
+
+        if (array[i].status === "Offen") {
+          statusClass = "status-green";
+        } else if (array[i].status === "Geschlossen") {
+          statusClass = "status-red";
+        } else if (array[i].status === "Anstehend") {
+          statusClass = "status-orange";
+        }
+
       const listElement = `
 
                 <div class="py-2 entry" data-entry-id="${array[i].id}">
                     <h3 class="text-white text-lg font-semibold">${array[i].companyName}</h3>
+                    <p class="text-gray-400 ${statusClass}">${array[i].status}</p>
                     <p class="text-gray-400">${array[i].companyEmail}</p>
                     <p class="text-gray-400">${array[i].companyDescription}</p>
                     <div class="flex mt-2">
@@ -18,9 +30,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                         </button>
                     </div>
                 </div>
+                
                 `;
       entryList.innerHTML += listElement;
     }
+    style.innerHTML = `
+    .status-green {
+        color: #4CAF50; /* Green */
+    }
+    .status-red {
+        color: #F44336; /* Red */
+    }
+    .status-orange {
+      color: orange;
+    }
+`;document.head.appendChild(style);
     // Erfassen Sie alle Elemente mit der Klasse "entry"
     const entries = document.querySelectorAll('.entry');
 
