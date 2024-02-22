@@ -31,11 +31,33 @@ const add = async (req, res) => {
   } = req.body;
 
   const values = [
-    1, firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname,
-    qvYear, certificate, noteQV, internshipContract || null, efzCopy, legalGuardian || null, applicationDate,
-    intershipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate,
+    1,
+    firstname,
+    lastname,
+    imageApplicant,
+    address,
+    cityAndZip,
+    country,
+    field,
+    classname,
+    qvYear,
+    certificate,
+    noteQV,
+    internshipContract || null,
+    efzCopy,
+    legalGuardian || null,
+    applicationDate,
+    intershipCompany,
+    responsiblePerson,
+    applicationStatus,
+    interviewDate,
+    trialVisitDate,
     contractCreationDate || null,
-    internshipSalary1, internshipSalary2, mbaApprovalDate || null, birthDate, ahvNumber
+    internshipSalary1,
+    internshipSalary2,
+    mbaApprovalDate || null,
+    birthDate,
+    ahvNumber,
   ];
 
   const userId = 1;
@@ -56,13 +78,12 @@ const add = async (req, res) => {
   }
 };
 
-
 const showAllEntries = async (req, res) => {
-  const allCompanies = await executeSQL('SELECT * FROM entries');
+  const allCompanies = await executeSQL("SELECT * FROM entries");
   const result = allCompanies;
 
   res.json(result);
-}
+};
 
 const getEntryById = async (req, res) => {
   const entryId = req.params.id;
@@ -77,6 +98,76 @@ const getEntryById = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Serverfehler beim Abrufen des Eintrags" });
   }
+};
+
+const edit = async (req, res) => {
+  const { id } = req.params;
+  const {
+    firstname,
+    lastname,
+    imageApplicant,
+    address,
+    cityAndZip,
+    country,
+    field,
+    classname,
+    qvYear,
+    certificate,
+    noteQV,
+    internshipContract,
+    efzCopy,
+    legalGuardian,
+    applicationDate,
+    intershipCompany,
+    responsiblePerson,
+    applicationStatus,
+    interviewDate,
+    trialVisitDate,
+    contractCreationDate,
+    internshipSalary1,
+    internshipSalary2,
+    mbaApprovalDate,
+    birthDate,
+    ahvNumber,
+  } = req.body;
+  await executeSQL(`
+  UPDATE entries
+  SET
+  user_id = 1,
+  firstname = "${firstname}",
+  lastname = "${lastname}",
+  imageApplicant = "${imageApplicant}",
+  address = "${address}",
+  cityAndZip = "${cityAndZip}",
+  country = "${country}",
+  field = "${field}",
+  classname = "${classname}",
+  qvYear = "${qvYear}",
+  certificate = "${certificate}",
+  noteQV = "${noteQV}",
+  internshipContract = "${internshipContract}",
+  efzCopy = "${efzCopy}",
+  legalGuardian = "${legalGuardian}",
+  applicationDate = "${applicationDate}",
+  internshipCompany = "${intershipCompany}",
+  responsiblePerson = "${responsiblePerson}",
+  applicationStatus = "${applicationStatus}",
+  interviewDate = "${interviewDate}",
+  trialVisitDate = "${trialVisitDate}",
+  contractCreationDate = "${contractCreationDate}",
+  internshipSalary1 = "${internshipSalary1}",
+  internshipSalary2 = "${internshipSalary2}",
+  mbaApprovalDate = "${mbaApprovalDate}",
+  birthDate = "${birthDate}",
+  ahvNumber = "${ahvNumber}"
+  WHERE id = ${id}`);
+  res.json({ message: "OK", id });
+};
+
+const remove = async (req, res) => {
+  const { id } = req.params;
+  await executeSQL(`DELETE FROM entries WHERE id = ${id}`);
+  res.json({ message: "OK", id });
 };
 
 module.exports = { add, showAllEntries, getEntryById, edit, remove };
