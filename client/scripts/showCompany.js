@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const entryList = document.getElementById("entryList");
   const showEntries = (array) => {
     for (let i = 0; i < array.length; i++) {
-      
       const listElement = `
 
                 <div class="py-2 entry" data-entry-id="${array[i].id}">
@@ -22,24 +21,30 @@ document.addEventListener("DOMContentLoaded", async () => {
       entryList.innerHTML += listElement;
     }
     // Erfassen Sie alle Elemente mit der Klasse "entry"
-    const entries = document.querySelectorAll('.entry');
+    const entries = document.querySelectorAll(".entry");
 
     // Fügen Sie einen Klickereignishandler für jedes Element hinzu
-    entries.forEach(entry => {
-      entry.addEventListener('click', () => {
-        const entryId = entry.dataset.entryId;
+    entries.forEach((entry) => {
+      const entryId = entry.dataset.entryId;
+      entry.addEventListener("click", () => {
         window.location.href = `/companyDetail/${entryId}`;
       });
-      entry.querySelector('#editButton').addEventListener('click', (event) => {
+      entry.querySelector("#editButton").addEventListener("click", (event) => {
         event.stopPropagation(); // Prevents the click event from bubbling up to the parent entry element
-        const entryId = entry.dataset.entryId;
         window.location.href = `/companyEdit/${entryId}`;
       });
+      entry
+        .querySelector("#deleteButton")
+        .addEventListener("click", async (event) => {
+          event.stopPropagation(); // Prevents the click event from bubbling up to the parent entry element
+          await fetch(`/api/company/${entryId}`, {
+            method: "DELETE",
+          });
+          window.location.reload();
+        });
     });
   };
 
-
-  
   const response = await fetch("http://localhost:3000/api/company");
   const entries = await response.json();
   console.log({ entries });
