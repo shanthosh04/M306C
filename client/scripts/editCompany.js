@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("companyEmail").value = data.companyEmail;
         document.getElementById("companyPhone").value = data.companyPhone;
         document.getElementById("companyField").value = data.companyField;
+        document.getElementById("status").value = data.status
 
     } catch (error) {
         console.error('Fetch-Fehler:', error);
