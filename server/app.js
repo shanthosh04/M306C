@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const api = require("./api");
@@ -25,9 +26,11 @@ app.get("/newForm", (req, res) => res.sendFile(newPath + "addentries.html"));
 app.get("/request", (req, res) => res.sendFile(newPath + "acceptEntries.html"));
 app.get("/company", (req, res) => res.sendFile(newPath + "showCompany.html"));
 app.get("/register", (req, res) => res.sendFile(newPath + "register.html"));
+
 app.get("/companyDetail/:companyId", (req, res) => res.sendFile(newPath + "CompanyDetail.html"));
 app.get("/entryDetail/:entryId", (req, res) => res.sendFile(newPath + "entriesDetail.html"));
 app.get("/companyEdit/:companyId", (req, res) => res.sendFile(newPath + "editCompany.html"));
+
 
 // Initialize the REST api
 app.use("/api", api);
