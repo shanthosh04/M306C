@@ -49,6 +49,7 @@ const initializeDBSchema = async () => {
     companyEmail VARCHAR(255) NOT NULL,
     companyPhone VARCHAR(255) NOT NULL,
     companyField VARCHAR(255) NOT NULL,
+    status VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
   );`;
   await executeSQL(companyTableQuery);

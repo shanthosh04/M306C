@@ -10,12 +10,13 @@ const add = async (req, res) => {
     companyEmail,
     companyPhone,
     companyField,
+    status,
   } = req.body;
   const query = `
 INSERT INTO companys
-(companyName, companyCity, companyStreet, companyDescription, contactPerson, companyEmail, companyPhone, companyField)
+(companyName, companyCity, companyStreet, companyDescription, contactPerson, companyEmail, companyPhone, companyField, status)
 VALUES
-("${companyName}", "${companyCity}", "${companyStreet}", "${companyDescription}", "${contactPerson}", "${companyEmail}", "${companyPhone}", "${companyField}")`;
+("${companyName}", "${companyCity}", "${companyStreet}", "${companyDescription}", "${contactPerson}", "${companyEmail}", "${companyPhone}", "${companyField}", "${status}")`;
   try {
     const result = await executeSQL(query);
     if (result.affectedRows === 1) {
