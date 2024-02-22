@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const entryList = document.getElementById("entryList");
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   const showEntries = (array) => {
     for (let i = 0; i < array.length; i++) {
-      
-      let statusClass = ""; // Default class is empty
+      let statusClass = "" // Default class is empty
       let statusSymbol = ""
 
         if (array[i].status === "Offen") {
@@ -17,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           statusClass = "h-6 w-6 rounded-full bg-orange-500 flex items-center justify-center text-white mb-1";
           statusSymbol = "M12 6v6m0 0v6m0-6h6m-6 0H6";
         }
+
 
       const listElement = `
 
@@ -47,27 +47,43 @@ document.addEventListener("DOMContentLoaded", async () => {
                 `;
       entryList.innerHTML += listElement;
     }
-
-document.head.appendChild(style);
+    style.innerHTML = `
+    .status-green {
+        color: #4CAF50; /* Green */
+    }
+    .status-red {
+        color: #F44336; /* Red */
+    }
+    .status-orange {
+      color: orange;
+    }
+`;
+    document.head.appendChild(style);
     // Erfassen Sie alle Elemente mit der Klasse "entry"
-    const entries = document.querySelectorAll('.entry');
+    const entries = document.querySelectorAll(".entry");
 
     // Fügen Sie einen Klickereignishandler für jedes Element hinzu
-    entries.forEach(entry => {
-      entry.addEventListener('click', () => {
-        const entryId = entry.dataset.entryId;
+    entries.forEach((entry) => {
+      const entryId = entry.dataset.entryId;
+      entry.addEventListener("click", () => {
         window.location.href = `/companyDetail/${entryId}`;
       });
-      entry.querySelector('#editButton').addEventListener('click', (event) => {
+      entry.querySelector("#editButton").addEventListener("click", (event) => {
         event.stopPropagation(); // Prevents the click event from bubbling up to the parent entry element
-        const entryId = entry.dataset.entryId;
         window.location.href = `/companyEdit/${entryId}`;
       });
+      entry
+        .querySelector("#deleteButton")
+        .addEventListener("click", async (event) => {
+          event.stopPropagation(); // Prevents the click event from bubbling up to the parent entry element
+          await fetch(`/api/company/${entryId}`, {
+            method: "DELETE",
+          });
+          window.location.reload();
+        });
     });
   };
 
-
-  
   const response = await fetch("http://localhost:3000/api/company");
   const entries = await response.json();
   console.log({ entries });

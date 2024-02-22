@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const companyForm = document.getElementById("companyForm");
-    const errorText = document.getElementById("error");
-    const path = window.location.pathname;
-    const idPath = path.split('/').pop();
-    const companyId = parseInt(idPath);
+  const companyForm = document.getElementById("companyForm");
+  const errorText = document.getElementById("error");
+  const path = window.location.pathname;
+  const idPath = path.split("/").pop();
+  const companyId = parseInt(idPath);
+
 
     try {
         const response = await fetch(`/api/company/${companyId}`); 
@@ -35,6 +36,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         const formData = new FormData(companyForm);
         const data = Object.fromEntries(formData.entries());
         console.log(data)
+        try {
+          await fetch(`/api/company/${companyId}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+        } catch (err) {
+          console.error(err);
+        }
     });
   });
   

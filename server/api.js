@@ -18,13 +18,16 @@ const authenticateToken = (req, res, next) => {
 app.post("/login", auth.login);
 app.post("/register", auth.register);
 
-app.post("/entry/add", entry.add);
-app.get("/showAllEntries", entry.showAllEntries);
+app.post("/entry", entry.add);
+app.get("/entry", entry.showAllEntries);
 app.get("/entry/:id", entry.getEntryById);
+app.put("/entry/:id", entry.edit);
+app.delete("/entry/:id", entry.remove);
 
 app.get("/company", company.getAll);
 app.post("/company", company.add);
 app.get("/company/:id", company.getCompanyById);
-
+app.put("/company/:id", company.edit);
+app.delete("/company/:id", company.remove);
 
 module.exports = app;
