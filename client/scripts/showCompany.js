@@ -10,8 +10,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <p class="text-gray-400">${array[i].companyEmail}</p>
                     <p class="text-gray-400">${array[i].companyDescription}</p>
                     <div class="flex mt-2">
-                        <button class="text-white bg-red-500 px-4 py-2 rounded-full hover:bg-red-600">
+                        <button class="text-white bg-red-500 px-4 py-2 rounded-full hover:bg-red-600" id="deleteButton">
                             <span class="material-symbols-outlined">delete</span>
+                        </button>
+                        <button class="text-white bg-blue-500 px-4 py-2 rounded-full hover:bg-blue-600 ml-4" id="editButton">
+                          <span class="material-symbols-outlined">edit</span>
                         </button>
                     </div>
                 </div>
@@ -24,13 +27,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Fügen Sie einen Klickereignishandler für jedes Element hinzu
     entries.forEach(entry => {
       entry.addEventListener('click', () => {
-        // Abrufen der ID des Eintrags aus dem "data-entry-id" Attribut
         const entryId = entry.dataset.entryId;
-        // Weiterleitung zur Detailseite mit der ID des Eintrags
-        window.location.href = `/companyDetail/${entryId}`; // Passe die URL entsprechend deiner Anwendung an
+        window.location.href = `/companyDetail/${entryId}`;
+      });
+      entry.querySelector('#editButton').addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevents the click event from bubbling up to the parent entry element
+        const entryId = entry.dataset.entryId;
+        window.location.href = `/companyEdit/${entryId}`;
       });
     });
   };
+
+
+  
   const response = await fetch("http://localhost:3000/api/company");
   const entries = await response.json();
   console.log({ entries });

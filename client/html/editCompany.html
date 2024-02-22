@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <script src="../scripts/editCompany.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../img/logo.png" type="image/icon type" />
+    <title>Firmen erstellen</title>
+  </head>
+
+  <body class="bg-gray-900 text-white flex flex-col min-h-screen">
+
+    <nav class="bg-gray-800">
+      <div class="navigation">
+
+        <div class="flex items-center">
+          <a href="/homepage">
+            <img class="h-12 my-4" src="../img/logo.png" alt="logo" />
+          </a>
+          <a href="/homepage" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Start Seite</a>
+          <a href="/company/create" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Firmen hinzufügen</a>
+          <a href="/newForm" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Einträge Erstellen</a>
+          <a href="/request" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Anfragen</a>
+          <a href="/company" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Firmen</a>
+          <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-xl font-medium">Abmelden</a>
+        </div>
+
+      </div>
+  </nav>
+
+    <div class="flex-grow flex items-center justify-center my-10">
+      <div class="bg-gray-800 p-4 w-3/4 justify-around rounded-lg">
+        <h1 class="text-white text-4xl ml-3 my-3 font-bold">FIrma Bearbeiten</h1>
+        <div class="company-form-container">
+          <form id="companyForm">
+            <div class="flex">
+              <div class="w-1/2 p-4">
+                <!-- Firmeninformationen -->
+                <div class="flex flex-col mb-4">
+                  <label for="companyName" class="text-white">Firmenname:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="text"
+                    name="companyName"
+                    id="companyName"
+                    placeholder="Bitte geben Sie den Firmennamen ein"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="companyCity" class="text-white">Stadt:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="text"
+                    name="companyCity"
+                    id="companyCity"
+                    placeholder="Bitte geben Sie die Stadt ein"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                    <label for="companyStreet" class="text-white">Strasse:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="text"
+                      name="companyStreet"
+                      id="companyStreet"
+                      placeholder="Bitte geben Sie die Strasse ein"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                  <label for="companyDescription" class="text-white">Firmenbeschreibung:</label>
+                  <textarea
+                    class="p-2 border border-gray-300 rounded text-black"
+                    name="companyDescription"
+                    id="companyDescription"
+                    placeholder="Bitte geben Sie die Firmenbeschreibung ein"
+                    required
+                  ></textarea>
+                </div>
+                <div class="flex flex-col mb-4">
+                  <label for="contactPerson" class="text-white">Ansprechperson:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="text"
+                    name="contactPerson"
+                    id="contactPerson"
+                    placeholder="Bitte geben Sie die Ansprechperson ein"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="w-1/2 p-4">
+                <!-- Kontaktdaten -->
+                <div class="flex flex-col mb-4">
+                  <label for="companyEmail" class="text-white">E-Mail:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="email"
+                    name="companyEmail"
+                    id="companyEmail"
+                    placeholder="Bitte geben Sie die E-Mail-Adresse ein"
+                    required
+                  />
+                </div>
+                <div class="flex flex-col mb-4">
+                    <label for="companyPhone" class="text-white">Telefonnummer:</label>
+                    <input
+                      class="p-2 border border-gray-300 rounded text-black"
+                      type="tel"
+                      name="companyPhone"
+                      id="companyPhone"
+                      placeholder="Bitte geben Sie die Telefonnummer ein"
+                      required
+                    />
+                  </div>
+                <div class="flex flex-col mb-4">
+                  <label for="companyField" class="text-white">Fachrichtung:</label>
+                  <input
+                    class="p-2 border border-gray-300 rounded text-black"
+                    type="text"
+                    name="companyField"
+                    id="companyField"
+                    placeholder="Bitte geben Sie die Fachrichtung ein"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <button type="submit" id="addCompany" class="bg-blue-500 text-white px-4 py-2 rounded w-full">Änderungen Speichern</button>
+          </form>
+
+          <div id="error"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-gray-800 py-8 px-3 mt-auto">
+      <div class="container mx-auto text-center">
+        <p class="text-white">Copyright &copy; 2024 | Designed by inf 22</p>
+      </div>
+    </footer>
+  
+  </body>
+</html>
