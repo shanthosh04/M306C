@@ -40,6 +40,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         <label for="companyField" class="text-white text-lg font-bold mb-1">Fachrichtung:</label>
         <span id="companyField">${company.companyField}</span>
       </div>
+      <div class="flex flex-col mb-4">
+        <label for="companyField" class="text-white text-lg font-bold mb-1">Fachrichtung:</label>
+        <span id="companyField">${company.status}</span>
+      </div>
     </div>
       `;
       fullEntry.innerHTML = entryElement;
