@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
       <div class="flex flex-col mb-4">
           <label for="legalguardian" class="text-white text-lg font-bold mb-1">Erziehungsberechtigte:</label>
-          <span id="legalguardian">${entry.legalGurdian}</span>
+          <span id="legalguardian">${entry.legalGuardian}</span>
       </div>
       <div class="flex flex-col mb-4">
           <label for="applicationDate" class="text-white text-lg font-bold mb-1">Datum Bewerbung:</label>
