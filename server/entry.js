@@ -59,10 +59,10 @@ const add = async (req, res) => {
 
     const values = [
       1, firstname, lastname, imageApplicant, address, cityAndZip, country, field, classname,
-      qvYear, certificate, noteQV, internshipContract, efzCopy, legalGuardian, applicationDate,
+      qvYear, certificate, noteQV, internshipContract ? internshipContract : null, efzCopy, legalGuardian ? legalGuardian : null, applicationDate,
       intershipCompany, responsiblePerson, applicationStatus, interviewDate, trialVisitDate,
-      contractCreationDate ? contractCreationDate : null, // Verwendung von NULL, wenn kein Wert vorhanden ist
-      internshipSalary1, internshipSalary2, mbaApprovalDate, birthDate, ahvNumber
+      contractCreationDate ? contractCreationDate : null,
+      internshipSalary1, internshipSalary2, mbaApprovalDate ? mbaApprovalDate : null, birthDate, ahvNumber
     ];
 
   const userId = 1;
