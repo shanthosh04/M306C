@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (array[i].status === "Offen") {
           statusClass = "status-green";
-        } else if (array[i].status === "NichtBewerben") {
+        } else if (array[i].status === "Geschlossen") {
           statusClass = "status-red";
-        } else if (array[i].status === "InBesprechung") {
+        } else if (array[i].status === "Anstehend") {
           statusClass = "status-orange";
         }
 
