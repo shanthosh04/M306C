@@ -62,6 +62,7 @@ const edit = async (req, res) => {
     companyEmail,
     companyPhone,
     companyField,
+    status,
   } = req.body;
   await executeSQL(`
   UPDATE companys
@@ -73,7 +74,8 @@ const edit = async (req, res) => {
   contactPerson = "${contactPerson}",
   companyEmail = "${companyEmail}",
   companyPhone = "${companyPhone}",
-  companyField = "${companyField}"
+  companyField = "${companyField}",
+  status = "${status}"
   WHERE id = ${id}`);
   res.json({ message: "OK", id });
 };
