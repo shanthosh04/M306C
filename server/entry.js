@@ -79,5 +79,4 @@ const getEntryById = async (req, res) => {
   }
 };
 
-module.exports = { add, showAllEntries, getEntryById };
-
+module.exports = { add, showAllEntries, getEntryById, edit, remove };
