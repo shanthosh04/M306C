@@ -36,6 +36,9 @@ app.get("/entryDetail/:entryId", (req, res) =>
 app.get("/companyEdit/:companyId", (req, res) =>
   res.sendFile(newPath + "editCompany.html")
 );
+app.get("/editEntries/:entryId", (req, res) =>
+  res.sendFile(newPath + "editEntries.html")
+);
 
 // Initialize the REST api
 app.use("/api", api);

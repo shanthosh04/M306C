@@ -27,12 +27,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Fügen Sie einen Klickereignishandler für jedes Element hinzu
     entries.forEach((entry) => {
-      console.log("faojndiaef")
       const entryId = entry.dataset.entryId;
       entry.addEventListener("click", () => {
         window.location.href = `/entryDetail/${entryId}`;
       });
-      
+      entry.querySelector("#editButton").addEventListener("click", (event) => {
+        event.stopPropagation(); // Prevents the click event from bubbling up to the parent entry element
+        window.location.href = `/editEntries/${entryId}`;
+      });
       entry
         .querySelector("#deleteButton")
         .addEventListener("click", async (event) => {

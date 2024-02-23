@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const companyForm = document.getElementById("companyForm");
-  const errorText = document.getElementById("error");
   const path = window.location.pathname;
   const idPath = path.split("/").pop();
   const companyId = parseInt(idPath);
