@@ -4,6 +4,7 @@ const http = require("http");
 const api = require("./api");
 const { initializeMariaDB, initializeDBSchema } = require("./database");
 const cors = require("cors");
+const { authenticateToken } = require("./middleware");
 
 // Create the express server
 const app = express();
@@ -18,8 +19,8 @@ const newPath = __dirname.slice(0, -6) + "/client/html/";
 
 // route for the homepage
 app.get("/", (req, res) => res.sendFile(newPath + "index.html"));
-app.get("/homepage", (req, res) => res.sendFile(newPath + "homepage.html"));
-app.get("/company/create", (req, res) =>
+app.get("/homepage",authenticateToken(), (req, res) => res.sendFile(newPath + "homepage.html"));
+app.get("/company/create", authenticateToken("admin"), (req, res) =>
   res.sendFile(newPath + "addCompany.html")
 );
 app.get("/newForm", (req, res) => res.sendFile(newPath + "addentries.html"));
@@ -27,16 +28,16 @@ app.get("/request", (req, res) => res.sendFile(newPath + "acceptEntries.html"));
 app.get("/company", (req, res) => res.sendFile(newPath + "showCompany.html"));
 app.get("/register", (req, res) => res.sendFile(newPath + "register.html"));
 
-app.get("/companyDetail/:companyId", (req, res) =>
+app.get("/companyDetail/:companyId",authenticateToken(), (req, res) =>
   res.sendFile(newPath + "CompanyDetail.html")
 );
-app.get("/entryDetail/:entryId", (req, res) =>
+app.get("/entryDetail/:entryId",authenticateToken(), (req, res) =>
   res.sendFile(newPath + "entriesDetail.html")
 );
-app.get("/companyEdit/:companyId", (req, res) =>
+app.get("/companyEdit/:companyId",authenticateToken(), (req, res) =>
   res.sendFile(newPath + "editCompany.html")
 );
-app.get("/editEntries/:entryId", (req, res) =>
+app.get("/editEntries/:entryId",authenticateToken(), (req, res) =>
   res.sendFile(newPath + "editEntries.html")
 );
 
