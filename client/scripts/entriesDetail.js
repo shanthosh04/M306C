@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     };
 
+
+
+
+
     const showEntry = (entry) => {
         const entryElement = `
         <div class="w-1/2 p-4">
@@ -115,6 +119,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         const data = await response.json(); 
         showEntry(data);
+        console.log(data.imageApplicant)
     } catch (error) {
         console.error('Fetch-Fehler:', error);
     }

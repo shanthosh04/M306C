@@ -44,10 +44,10 @@ const initializeDBSchema = async () => {
     companyName VARCHAR(255) NOT NULL,
     companyCity VARCHAR(255) NOT NULL,
     companyStreet VARCHAR(255) NOT NULL,
-    companyDescription VARCHAR(1024) NOT NULL,
+    companyDescription VARCHAR(1024) ,
     contactPerson VARCHAR(255) NOT NULL,
     companyEmail VARCHAR(255) NOT NULL,
-    companyPhone VARCHAR(255) NOT NULL,
+    companyPhone VARCHAR(255) ,
     companyField VARCHAR(255) NOT NULL,
     status VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
