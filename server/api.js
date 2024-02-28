@@ -19,4 +19,9 @@ app.get("/company/:id", authenticateToken(), company.getCompanyById);
 app.put("/company/:id", authenticateToken("admin"), company.edit);
 app.delete("/company/:id", authenticateToken("admin"), company.remove);
 
+app.post("/auth", authenticateToken(), (req, res) => {
+  const { user } = req;
+  res.json({ status: 200, user });
+});
+
 module.exports = app;

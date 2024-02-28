@@ -1,12 +1,24 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const fullEntry = document.getElementById("fullEntry");
-  
-    const path = window.location.pathname;
-    const idPath = path.split('/').pop();
-    const companyId = parseInt(idPath);
+  const token = localStorage.getItem("token");
+  const result = await fetch("/api/auth", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: token,
+    },
+  });
+  const auth = await result.json();
+  if (auth.status !== 200)
+    return window.location.replace("/error/" + auth.status);
 
-    const showEntry = (company) => {
-      const entryElement = `
+  const fullEntry = document.getElementById("fullEntry");
+
+  const path = window.location.pathname;
+  const idPath = path.split("/").pop();
+  const companyId = parseInt(idPath);
+
+  const showEntry = (company) => {
+    const entryElement = `
       <div id="company-details" class="ml-3 my-3">
       <div class="flex flex-col mb-4">
         <label for="companyName" class="text-white text-lg font-bold mb-1">Firmenname:</label>
@@ -46,17 +58,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
     </div>
       `;
-      fullEntry.innerHTML = entryElement;
-    };
-    try {
-        const response = await fetch(`/api/company/${companyId}`); 
-        if (!response.ok) {
-          throw new Error('Fehler beim Abrufen der Firma');
-        }
-        const data = await response.json(); 
-        showEntry(data);
-      } catch (error) {
-        console.error('Fetch-Fehler:', error);
-      }
-  });
-  
+    fullEntry.innerHTML = entryElement;
+  };
+  try {
+    const response = await fetch(`/api/company/${companyId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Fehler beim Abrufen der Firma");
+    }
+    const data = await response.json();
+    showEntry(data);
+  } catch (error) {
+    console.error("Fetch-Fehler:", error);
+  }
+});
