@@ -30,34 +30,37 @@ const add = async (req, res) => {
     ahvNumber,
   } = req.body;
 
+  // Convert empty string to null for qvYear
+  const qvYearValue = qvYear === '' ? null : parseInt(qvYear);
+ 
   const values = [
     1,
     firstname,
     lastname,
-    imageApplicant,
+    imageApplicant || null,
     address,
     cityAndZip,
     country,
     field,
     classname,
-    qvYear,
-    certificate,
-    noteQV,
+    qvYearValue, 
+    certificate || null,
+    noteQV || null,
     internshipContract || null,
-    efzCopy,
+    efzCopy || null,
     legalGuardian || null,
     applicationDate,
     intershipCompany,
     responsiblePerson,
     applicationStatus,
-    interviewDate,
-    trialVisitDate,
+    interviewDate || null,
+    trialVisitDate || null,
     contractCreationDate || null,
-    internshipSalary1,
-    internshipSalary2,
+    internshipSalary1 || null,
+    internshipSalary2 || null,
     mbaApprovalDate || null,
     birthDate,
-    ahvNumber,
+    ahvNumber || null,
   ];
 
   const userId = 1;
@@ -77,6 +80,12 @@ const add = async (req, res) => {
     res.status(500).json({ error: "Serverfehler bei der Ereigniserstellung" });
   }
 };
+;
+
+
+
+
+
 
 const showAllEntries = async (req, res) => {
   const allCompanies = await executeSQL("SELECT * FROM entries");
