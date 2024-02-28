@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   };
 
-  const response = await fetch("http://localhost:3000/api/company", {
+  const response = await fetch("/api/company", {
     headers: {
       "Content-Type": "application/json",
       authorization: token,

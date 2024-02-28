@@ -2,9 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const api = require("./api");
-const { initializeMariaDB, initializeDBSchema } = require("./database");
+const {
+  initializeMariaDB,
+  initializeDBSchema,
+  executeSQL,
+} = require("./database");
 const cors = require("cors");
-const { authenticateToken } = require("./middleware");
 
 // Create the express server
 const app = express();
@@ -42,8 +45,33 @@ app.get("/editEntries/:entryId", (req, res) =>
 );
 
 app.get("/error/:status", (req, res) => {
-  const {status} = req.params
-  res.sendFile(newPath + "error.html")
+  const { status } = req.params;
+  res.sendFile(newPath + "error.html");
+});
+
+const student = (first, last) =>
+  `,("${first}", "${last}", "${first.toLowerCase()}.${last.toLowerCase()}@modul.local", "Admin123", "student")`;
+
+app.get("/seed/users", async (req, res) => {
+  const query = `
+  INSERT INTO users
+  (firstname, lastname, email, password, role)
+  VALUES
+  ("Dimitri", "Steiner", "dimitri.steiner@modul.local", "Admin123", "admin")
+  ,("Musa", "Khan", "musa.khan@modul.local", "Admin123", "admin")
+  ,("Keith", "Hager", "keith.hager@modul.local", "Admin123", "admin")
+  ${student("Lars", "Gerencser") +
+    student("Noah", "Wernli") +
+    student("Boran", "Sancar") +
+    student("Shanthosh", "Sivasenthinathan") +
+    student("Yusuf", "Khurshid") +
+    student("Ilja", "Pidonenko") +
+    student("Basil", "Eyholzer") +
+    student("Riza", "Cavdar") +
+    student("Doruk", "Yildirim")}`;
+  await executeSQL(query)
+  const result = await executeSQL(`SELECT * FROM users`)
+  res.json(result);
 });
 
 // Initialize the REST api

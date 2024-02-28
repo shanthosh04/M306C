@@ -39,7 +39,7 @@ const login = async (req, res) => {
         {
           userId: user.id,
           email: user.email,
-          roles: ["admin"] /** Hardcoded Role */,
+          roles: [user.role],
         },
         process.env.JWT_SECRET || "secretevent",
         { expiresIn: "1h" }

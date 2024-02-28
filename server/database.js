@@ -29,12 +29,9 @@ const initializeDBSchema = async () => {
     id INT NOT NULL AUTO_INCREMENT,
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
-    birthdate DATE NOT NULL,
-    street VARCHAR(255) NOT NULL,
-    zipcode VARCHAR(255) NOT NULL,
-    city VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
+    role VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
   );`;
   await executeSQL(userTableQuery);

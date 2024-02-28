@@ -19,8 +19,6 @@ document.addEventListener("DOMContentLoaded", async() => {
 
         const formData = new FormData(loginForm);
         const data = Object.fromEntries(formData.entries());
-        console.log(data)
-
         try {
             const response = await fetch("/api/entry", {
                 method: "POST",
