@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("token");
   const result = await fetch("/api/auth", {
@@ -76,3 +77,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Fetch-Fehler:", error);
   }
 });
+
