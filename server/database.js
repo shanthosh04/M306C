@@ -3,13 +3,15 @@ let pool = null;
 const initializeMariaDB = () => {
   const mariadb = require("mariadb");
   pool = mariadb.createPool({
-    database: process.env.DB_NAME || "mychat",
-    host: process.env.DB_HOST || "localhost",
-    user: process.env.DB_USER || "mychat",
-    password: process.env.DB_PASSWORD || "mychatpassword",
+    database: process.env.DB_NAME || "mariadb",
+    host: process.env.DB_HOST || "172.16.1.20",
+    port: 3306,
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "Admin123",
     connectionLimit: 5,
   });
 };
+
 
 const executeSQL = async (query, params) => {
   let conn;

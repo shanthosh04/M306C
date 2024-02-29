@@ -48,7 +48,7 @@ initializeMariaDB();
 initializeDBSchema();
 
 //start the web server
-const serverPort = process.env.PORT || 3000;
+const serverPort = process.env.PORT || 80;
 server.listen(serverPort, "0.0.0.0", () => {
   console.log(`Express Server started on http://localhost:${serverPort}/`);
 });
