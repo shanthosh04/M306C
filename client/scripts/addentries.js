@@ -1,4 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async() => {
+
+    const token = localStorage.getItem("token");
+    const result = await fetch("/api/auth", {
+      method:"POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    const auth = await result.json()
+    if (auth.status !== 200) return window.location.replace("/error/"+auth.status)
+
     const registerForm = document.getElementById("loginForm");
     const errorText = document.getElementById("error");
 
@@ -7,14 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const formData = new FormData(loginForm);
         const data = Object.fromEntries(formData.entries());
-        console.log(data)
-
         try {
             const response = await fetch("/api/entry", {
                 method: "POST",
                 body: formData,
                 headers: {
                     "Content-Type": "application/json",
+                    authorization: token,
                 },
                 body: JSON.stringify(data),
             });

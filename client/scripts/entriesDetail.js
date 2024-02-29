@@ -1,22 +1,34 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const fullEntry = document.getElementById("fullEntry");
-  
-    const path = window.location.pathname;
-    const idPath = path.split('/').pop();
-    const entryId = parseInt(idPath);
+  const token = localStorage.getItem("token");
+  const result = await fetch("/api/auth", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: token,
+    },
+  });
+  const auth = await result.json();
+  if (auth.status !== 200)
+    return window.location.replace("/error/" + auth.status);
 
-    const formatDate = (dateString) => {
-        if (!dateString) return '';
-        const date = new Date(dateString);
-        return date.toLocaleDateString('de-DE', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric',
-        });
-    };
+  const fullEntry = document.getElementById("fullEntry");
 
-    const showEntry = (entry) => {
-        const entryElement = `
+  const path = window.location.pathname;
+  const idPath = path.split("/").pop();
+  const entryId = parseInt(idPath);
+
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    return date.toLocaleDateString("de-DE", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+  };
+
+  const showEntry = (entry) => {
+    const entryElement = `
         <div class="w-1/2 p-4">
             <div class="flex flex-col mb-4">
                 <label for="companyName" class="text-white text-lg font-bold mb-1">Vorname:</label>
@@ -56,7 +68,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
             <div class="flex flex-col mb-4">
                 <label for="applicationDate" class="text-white text-lg font-bold mb-1">Datum Bewerbung:</label>
-                <span id="applicationDate">${formatDate(entry.applicationDate)}</span>
+                <span id="applicationDate">${formatDate(
+                  entry.applicationDate
+                )}</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="internshipCompany" class="text-white text-lg font-bold mb-1">Praktikums Firma:</label>
@@ -74,15 +88,21 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
             <div class="flex flex-col mb-4">
                 <label for="interviewDate" class="text-white text-lg font-bold mb-1">Datum Bewerbungsgespräch:</label>
-                <span id="interviewDate">${formatDate(entry.interviewDate)}</span>
+                <span id="interviewDate">${formatDate(
+                  entry.interviewDate
+                )}</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="trialVisitDate" class="text-white text-lg font-bold mb-1">Datum Schnupperbesuch:</label>
-                <span id="trialVisitDate">${formatDate(entry.trialVisitDate)}</span>
+                <span id="trialVisitDate">${formatDate(
+                  entry.trialVisitDate
+                )}</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="contractCreationDate" class="text-white text-lg font-bold mb-1">Datum Vertragserstellung:</label>
-                <span id="contractCreationDate">${formatDate(entry.contractCreationDate)}</span>
+                <span id="contractCreationDate">${formatDate(
+                  entry.contractCreationDate
+                )}</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="internshipSalary1" class="text-white text-lg font-bold mb-1">Praktikumslohn 1. Jahr:</label>
@@ -94,7 +114,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
             <div class="flex flex-col mb-4">
                 <label for="mbaApprovalDate" class="text-white text-lg font-bold mb-1">Datum Bewilligung MBA:</label>
-                <span id="mbaApprovalDate">${formatDate(entry.mbaApprovalDate)}</span>
+                <span id="mbaApprovalDate">${formatDate(
+                  entry.mbaApprovalDate
+                )}</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="birthDate" class="text-white text-lg font-bold mb-1">Geburtsdatum:</label>
@@ -106,16 +128,21 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
         </div>
         `;
-        fullEntry.innerHTML = entryElement;
-    };
-    try {
-        const response = await fetch(`/api/entry/${entryId}`); 
-        if (!response.ok) {
-          throw new Error('Fehler beim Abrufen der Daten');
-        }
-        const data = await response.json(); 
-        showEntry(data);
-    } catch (error) {
-        console.error('Fetch-Fehler:', error);
+    fullEntry.innerHTML = entryElement;
+  };
+  try {
+    const response = await fetch(`/api/entry/${entryId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Fehler beim Abrufen der Daten");
     }
+    const data = await response.json();
+    showEntry(data);
+  } catch (error) {
+    console.error("Fetch-Fehler:", error);
+  }
 });
