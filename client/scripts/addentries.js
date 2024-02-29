@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async() => {
         try {
             const response = await fetch("/api/entry", {
                 method: "POST",
+                body: formData,
                 headers: {
                     "Content-Type": "application/json",
                     authorization: token,

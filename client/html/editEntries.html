@@ -34,7 +34,7 @@
 
     <div class="flex-grow flex items-center justify-center my-10">
       <div class="bg-gray-800 p-4 w-3/4 justify-around rounded-lg">
-        <h1 class="text-white text-4xl ml-3 my-3 font-bold">Einträge Erstellen</h1>
+        <h1 class="text-white text-4xl ml-3 my-3 font-bold">Einträge Bearbeiten</h1>
         <div class="chat-container">
           <form id="loginForm">
             
@@ -64,15 +64,16 @@
                   />              
                 </div>
                 <div class="flex flex-col mb-4">
-                    <label for="Imageapplicant" class="text-white">Bild des Bewerbers:</label>
-                    <input
-                        class="p-2 border border-gray-300 rounded text-rose-600"
-                        type="file"
-                        name="imageApplicant"
-                        id="imageApplicant"
-                        required
-                    />
-                  </div>
+                  <label for="imageApplicant" class="text-white">Bild des Bewerbers:</label>
+                  <div id="existingImageApplicant"></div>
+                  <input
+                      class="p-2 border border-gray-300 rounded text-rose-600"
+                      type="file"
+                      name="imageApplicant"
+                      id="imageApplicant"
+                      required
+                  />
+              </div>
                 <div class="flex flex-col mb-4">
                     <label for="address" class="text-white">Strasse und Hausnummber:</label>
                     <input
@@ -141,6 +142,7 @@
                   </div>
                 <div class="flex flex-col mb-4">
                     <label for="certificate" class="text-white">Note / Zeugnis:</label>
+                    <div id="existingcertificate"></div>
                     <input
                       class="p-2 border border-gray-300 rounded text-rose-600"
                       type="file"
@@ -151,6 +153,7 @@
                   </div>
                 <div class="flex flex-col mb-4">
                     <label for="noteQV" class="text-white">Note QV:</label>
+                    <div id="existingnoteQV"></div>
                     <input
                       class="p-2 border border-gray-300 rounded text-rose-600"
                       type="file"
@@ -161,6 +164,7 @@
                   </div>
                 <div class="flex flex-col mb-4">
                     <label for="internshipContract" class="text-white">Praktikumsvertrag:</label>
+                    <div id="existinginternshipContract"></div>
                     <input
                       class="p-2 border border-gray-300 rounded text-rose-600"
                       type="file"
@@ -171,6 +175,7 @@
                   </div>
                 <div class="flex flex-col mb-4">
                     <label for="efzCopy" class="text-white">Kopie EFZ:</label>
+                    <div id="existingefzCopy"></div>
                     <input
                       class="p-2 border border-gray-300 rounded text-rose-600"
                       type="file"

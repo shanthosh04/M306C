@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
+
   const token = localStorage.getItem("token");
   const result = await fetch("/api/auth", {
     method: "POST",
@@ -69,6 +70,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (error) {
     console.error("Fetch-Fehler:", error);
   }
+
+        const setFileLink = (elementId, fileName, fileUrl) => {
+            if (fileName) {
+                const container = document.getElementById(elementId);
+                const link = document.createElement('a');
+                link.href = fileUrl;
+                link.textContent = fileName;
+                link.setAttribute('target', '_blank'); 
+                container.appendChild(link);
+            }
+        };
+
+        setFileLink("existingImageApplicant", data.imageApplicantName, data.imageApplicantUrl);
+        setFileLink("existingCertificate", data.certificateUrl);
+        setFileLink("existingNoteQV", data.noteQVUrl);
+        setFileLink("existingInternshipContract", data.internshipContractUrl);
+        setFileLink("existingEfzCopy", data.efzCopyUrl);
+
+    } catch (error) {
+        console.error('Fetch-Fehler:', error);
+    }
 
   function formatDate(dateString) {
     const date = new Date(dateString);
