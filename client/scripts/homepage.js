@@ -1,8 +1,19 @@
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("token");
+  const result = await fetch("/api/auth", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: token,
+    },
+  });
+  const auth = await result.json();
+  if (auth.status !== 200)
+    return window.location.replace("/error/" + auth.status);
+
   const entryList = document.getElementById("entryList");
 
   const showEntries = async (array) => {
-    console.log(array[0]);
     for (let i = 0; i < array.length; i++) {
       const listElement = `
         <div class="py-2 entry" data-entry-id="${array[i].id}">
@@ -38,17 +49,25 @@ document.addEventListener('DOMContentLoaded', async () => {
       entry
         .querySelector("#deleteButton")
         .addEventListener("click", async (event) => {
-          
           event.stopPropagation(); // Prevents the click event from bubbling up to the parent entry element
           await fetch(`/api/entry/${entryId}`, {
             method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: token,
+            },
           });
           window.location.reload();
         });
     });
   };
 
-  const response = await fetch("/api/entry");
+  const response = await fetch("/api/entry", {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: token,
+    },
+  });
   const entries = await response.json();
   console.log({ entries });
   showEntries(entries);
