@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const http = require("http");
+const http = require("https");
 const api = require("./api");
 const {
   initializeMariaDB,
@@ -9,11 +9,16 @@ const {
 } = require("./database");
 const cors = require("cors");
 
+const options = {
+  key: fs.readFileSync("./cert/file.key"),/**Path to the private key */
+  cert: fs.readFileSync("./cert/file.crt"),/**Path to the certificate */
+};
+
 // Create the express server
 const app = express();
 app.use(cors());
 app.use(express.json());
-const server = http.createServer(app);
+const server = http.createServer(options, app);
 
 // deliver static files from the client folder like css, js, images
 app.use(express.static("client"));
@@ -45,7 +50,6 @@ app.get("/editEntries/:entryId", (req, res) =>
 );
 
 app.get("/error/:status", (req, res) => {
-  const { status } = req.params;
   res.sendFile(newPath + "error.html");
 });
 
@@ -69,8 +73,8 @@ app.get("/seed/users", async (req, res) => {
     student("Basil", "Eyholzer") +
     student("Riza", "Cavdar") +
     student("Doruk", "Yildirim")}`;
-  await executeSQL(query)
-  const result = await executeSQL(`SELECT * FROM users`)
+  await executeSQL(query);
+  const result = await executeSQL(`SELECT * FROM users`);
   res.json(result);
 });
 
