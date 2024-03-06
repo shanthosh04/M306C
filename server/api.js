@@ -1,5 +1,4 @@
 const app = require("express").Router();
-const jwt = require("jsonwebtoken");
 const auth = require("./auth");
 const entry = require("./entry");
 const company = require("./company");
