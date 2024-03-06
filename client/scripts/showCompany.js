@@ -1,22 +1,36 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("token");
+  const result = await fetch("/api/auth", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: token,
+    },
+  });
+  const auth = await result.json();
+  if (auth.status !== 200)
+    return window.location.replace("/error/" + auth.status);
+
   const entryList = document.getElementById("entryList");
   const style = document.createElement("style");
   const showEntries = (array) => {
     for (let i = 0; i < array.length; i++) {
-      let statusClass = "" // Default class is empty
-      let statusSymbol = ""
+      let statusClass = ""; // Default class is empty
+      let statusSymbol = "";
 
-        if (array[i].status === "Offen") {
-          statusClass = "h-6 w-6 rounded-full bg-green-500 flex items-center justify-center text-white mb-1";
-          statusSymbol = "M19 14l-7 7m0 0l-7-7m7 7V3";
-        } else if (array[i].status === "Geschlossen") {
-          statusClass = "h-6 w-6 rounded-full bg-red-500 flex items-center justify-center text-white mb-1";
-          statusSymbol = "M6 18L18 6M6 6l12 12";
-        } else if (array[i].status === "Anstehend") {
-          statusClass = "h-6 w-6 rounded-full bg-orange-500 flex items-center justify-center text-white mb-1";
-          statusSymbol = "M12 6v6m0 0v6m0-6h6m-6 0H6";
-        }
-
+      if (array[i].status === "Offen") {
+        statusClass =
+          "h-6 w-6 rounded-full bg-green-500 flex items-center justify-center text-white mb-1";
+        statusSymbol = "M19 14l-7 7m0 0l-7-7m7 7V3";
+      } else if (array[i].status === "Geschlossen") {
+        statusClass =
+          "h-6 w-6 rounded-full bg-red-500 flex items-center justify-center text-white mb-1";
+        statusSymbol = "M6 18L18 6M6 6l12 12";
+      } else if (array[i].status === "Anstehend") {
+        statusClass =
+          "h-6 w-6 rounded-full bg-orange-500 flex items-center justify-center text-white mb-1";
+        statusSymbol = "M12 6v6m0 0v6m0-6h6m-6 0H6";
+      }
 
       const listElement = `
 
@@ -78,13 +92,22 @@ document.addEventListener("DOMContentLoaded", async () => {
           event.stopPropagation(); // Prevents the click event from bubbling up to the parent entry element
           await fetch(`/api/company/${entryId}`, {
             method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: token,
+            },
           });
           window.location.reload();
         });
     });
   };
 
-  const response = await fetch("http://localhost:3000/api/company");
+  const response = await fetch("/api/company", {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: token,
+    },
+  });
   const entries = await response.json();
   console.log({ entries });
   showEntries(entries);
