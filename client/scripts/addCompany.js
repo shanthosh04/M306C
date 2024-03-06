@@ -1,4 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("token");
+  const result = await fetch("/api/auth", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: token,
+    },
+  });
+  const auth = await result.json();
+  if (auth.status !== 200)
+    return window.location.replace("/error/" + auth.status);
+  const { roles } = auth.user;
+  if (!roles.includes("admin")) return window.location.replace("/error/403");
+
   const companyForm = document.getElementById("companyForm");
   const errorText = document.getElementById("error");
 
@@ -13,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: token,
         },
         body: JSON.stringify(data),
       });
